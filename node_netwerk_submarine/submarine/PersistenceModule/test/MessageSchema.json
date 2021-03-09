@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "_id": {
+    "type": "string",
+    "required": true
+  },
+  "destination": {
+    "type": "object",
+    "hostname": {
+      "type": "string",
+      "required": true
+    },
+    "port": {
+      "type": "integer",
+      "required": true
+    },
+    "alias": {
+      "type": "string"
+    },
+    "required": true
+  },
+  "command": {
+    "type": "string",
+    "required": true
+  },
+  "data": {
+    "type": "string",
+    "required": true
+  }
+}

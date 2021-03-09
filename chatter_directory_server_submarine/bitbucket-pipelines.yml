@@ -1,0 +1,34 @@
+image: maven:3.6.1
+
+clone:
+  depth: full
+
+pipelines:
+  branches:
+    '{master,development}':
+      - step:
+          name: Run tests
+          caches:
+            - docker
+            - maven
+          script:
+            - docker run -p 27017:27017 --name mongo-db -d mongo
+            - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          services:
+            - docker
+      - step:
+          name: Docker deploy
+          caches:
+            - maven
+            - docker
+          script:
+            - docker run -p 27017:27017 --name mongo-db -d mongo
+            - mvn package && docker build . -t dennishk/asd-chatter-directory-server-submarine
+            - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+            - docker push dennishk/asd-chatter-directory-server-submarine
+          services:
+            - docker
+definitions:
+  caches:
+    sonar: ~/.sonar/cache
+    maven: ~/.m2/repository

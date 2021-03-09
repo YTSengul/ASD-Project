@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<Pane xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="nl.han.asd.submarine.uicontrollers.ConversationController"
+      prefHeight="400.0" prefWidth="600.0"
+      stylesheets="@style.css">
+    <ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" layoutY="47.0" prefHeight="461.0"
+                style="-fx-background: #4c5c68; -fx-background-color: #4c5c68;">
+        <VBox fx:id="conversationsBox"/>
+    </ScrollPane>
+    <JFXButton onAction="#openChatModal" layoutX="340" layoutY="512" prefHeight="35.0" prefWidth="35.0"
+               styleClass="add-chat-modal-button" stylesheets="@style.css" textAlignment="CENTER"
+               defaultButton="true">
+    </JFXButton>
+</Pane>

@@ -1,0 +1,39 @@
+image: maven:3.6.3-openjdk-14
+
+clone:
+  depth: full
+
+pipelines:
+  branches:
+    '{master,development}':
+      - step:
+          name: Run tests
+          caches:
+            - maven
+            - docker
+          script:
+            - docker pull dennishk/asd-node-submarine:latest
+            - docker pull mongo:4.4.0-rc7-bionic
+            - docker run --publish 25010:25010 -e "PORT=25010" --name node -d dennishk/asd-node-submarine
+            - docker run --publish 27017:27017 -d mongo:4.4.0-rc7-bionic
+            - mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+          artifacts:
+            - target/**
+          services:
+            - docker
+      - step:
+          name: Docker deploy
+          caches:
+            - maven
+            - docker
+          script:
+            - mvn package -DskipTests && docker build . -t hemmesdev/asd-desktop-applicatie-submarine
+            - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+            - docker push hemmesdev/asd-desktop-applicatie-submarine
+          services:
+            - docker
+
+definitions:
+  caches:
+    sonar: ~/.sonar/cache
+    maven: ~/.m2/repository

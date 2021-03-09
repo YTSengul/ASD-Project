@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.Font?>
+<MenuButton mnemonicParsing="false" popupSide="TOP" prefHeight="30.0" prefWidth="20.0"
+            styleClass="emoji-button" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.han.asd.submarine.uicontrollers.EmojiController">
+    <items>
+        <MenuItem fx:id="emoji0" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji0"/>
+            </styleClass>
+        </MenuItem>
+        <MenuItem fx:id="emoji1" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji1"/>
+            </styleClass>
+        </MenuItem>
+        <MenuItem fx:id="emoji2" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji2"/>
+            </styleClass>
+        </MenuItem>
+        <MenuItem fx:id="emoji3" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji3"/>
+            </styleClass>
+        </MenuItem>
+        <MenuItem fx:id="emoji4" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji4"/>
+            </styleClass>
+        </MenuItem>
+        <MenuItem fx:id="emoji5" mnemonicParsing="false" onAction="#insertEmoji">
+            <styleClass>
+                <String fx:value="emoji"/>
+                <String fx:value="emoji5"/>
+            </styleClass>
+        </MenuItem>
+    </items>
+    <font>
+        <Font size="1.0"/>
+    </font>
+</MenuButton>

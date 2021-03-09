@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<Accordion layoutY="10.0" layoutX="10" xmlns="http://javafx.com/javafx/11.0.1"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="nl.han.asd.submarine.uicontrollers.ContactController">
+    <panes>
+        <TitledPane text="Add contact">
+            <AnchorPane fx:id="addContactAnchorPane"
+                        minHeight="0.0" minWidth="10.0" prefHeight="130.0" prefWidth="175.0"
+                        style="-fx-background-color: #4c5c68">
+                <TextField fx:id="addContactAliasField"
+                           layoutX="10.0" layoutY="14.0" prefHeight="26.0" prefWidth="150.5"
+                           promptText="Alias"
+                           style="-fx-background-color: #46494c;-fx-text-inner-color: #dcdcdd"/>
+                <TextField fx:id="addContactPublicKeyField"
+                           layoutX="10.0" layoutY="50.0" prefHeight="26.0" prefWidth="150.5"
+                           promptText="Public key"
+                           style="-fx-background-color: #46494c;-fx-text-inner-color: #dcdcdd"/>
+                <Text fx:id="addContactText"
+                      layoutX="10.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      visible="false"
+                      style="-fx-font-family: Nunito Regular; -fx-font-size: 13; -fx-fill: white;"
+                      text="Contact has been added to your contacts"
+                      wrappingWidth="173.05743408203125"/>
+                <Button onAction="#addContactAction"
+                        fx:id="addContactButton"
+                        layoutX="10.0" layoutY="87.0" prefHeight="26.0" prefWidth="150.5"
+                        text="Add contact"
+                        style="-fx-background-color: #1985a1; -fx-text-fill: white; -fx-font-weight: bold; -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 0, 0, 3, 3);"/>
+            </AnchorPane>
+        </TitledPane>
+    </panes>
+</Accordion>

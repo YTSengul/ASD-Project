@@ -1,0 +1,49 @@
+# This is a sample build configuration for Python.
+# Check our guides at https://confluence.atlassian.com/x/x4UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+image: python:3.7.3
+
+clone:
+  depth: full    # SonarCloud scanner needs the full history to assign issues properly
+
+pipelines:
+  branches:
+    '{master,development}':
+      - parallel:
+          - step:
+              name: Run sonar
+              script:
+                - pipe: sonarsource/sonarcloud-scan:1.0.1
+          - step:
+              max-time: 10
+              name: Build docker-compose and test node-node communication
+              caches:
+                - docker
+              script:
+                - pip install -r requirements.txt
+                - pip install docker-compose
+                - export PYTHONPATH=/opt/atlassian/pipelines/agent/build
+                - docker-compose build
+                - docker-compose up -d
+                - docker container ls
+                - sleep 10s ## Because the 'docker run' command needs some time to start up, otherwise the ClientNode would refuse to connect
+                - docker-compose logs node
+                - python3 -m submarine.ConnectionModule.src.ClientNode
+                - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+                - docker push dennishk/asd-node-submarine
+              services:
+                - docker
+          - step:
+              max-time: 10
+              name: Run python tests
+              caches:
+                - pip
+              script:
+                - docker run -p 27017:27017 --name mongo-db -d mongo
+                - pip install -r requirements.txt
+                - export PYTHONPATH=/opt/atlassian/pipelines/agent/build
+                - pytest
+              services:
+                - docker

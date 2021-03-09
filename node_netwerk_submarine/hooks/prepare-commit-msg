@@ -1,0 +1,23 @@
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+COMMIT_SOURCE=$2
+SHA1=$3
+
+ROOT_DIR=$(git rev-parse --show-toplevel)
+
+if [[ -n $COMMIT_SOURCE && ($COMMIT_SOURCE == "template" || $COMMIT_SOURCE == "squash" || $COMMIT_SOURCE == "commit" || $COMMIT_SOURCE == "merge") ]]
+then
+echo "commit hook does nothing when using squashing, merging or one of the flags -t, -c, -C, --amend."
+elif [[ -n $COMMIT_SOURCE && $COMMIT_SOURCE == "message" ]]
+then
+echo "Gebruik maken van -m is niet toegestaan. Template moet gevolgd worden"
+exit 1
+else
+echo "ODZKJZ-#: <title>
+
+<langere omschrijving>
+
+<eventuele andere gelinkte issues of pull requests>" > "$COMMIT_MSG_FILE"
+
+fi

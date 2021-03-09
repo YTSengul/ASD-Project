@@ -1,0 +1,22 @@
+version: "3"
+services:
+  chatter-directory:
+    container_name: chatter-directory
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "8080:80"
+      - "25010:25010"
+    environment:
+      - PORT=25010
+    links:
+      - mongo-directory
+  mongo-directory:
+    container_name: mongo-directory
+    image: mongo
+    volumes:
+      - ./mongo_data:/data/db
+    ports:
+      - "27017:27017"

@@ -1,0 +1,88 @@
+@font-face {
+    font-family: "Nunito";
+    src: url("fonts/Nunito-Regular.ttf");
+}
+
+#body {
+    -fx-font-family: "Nunito";
+}
+
+.send-button {
+    -fx-background-image: url("images/send.png");
+    -fx-background-size: 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.add-chat-modal-button {
+    -fx-background-image: url('images/add_chat.png');
+    -fx-background-size: 30px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.doc-button {
+    -fx-background-image: url("images/doc.png");
+    -fx-background-size: 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+
+.emoji-button {
+    -fx-background-image: url("images/emoji.png");
+    -fx-background-size: 25px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color: transparent;
+}
+
+.emoji {
+    -fx-background-size: 32px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-padding: 16 16 16 16;
+}
+
+.emoji0 {
+    -fx-background-image: url("images/emoji/0.png");
+}
+
+.emoji1 {
+    -fx-background-image: url("images/emoji/1.png");
+}
+
+.emoji2 {
+    -fx-background-image: url("images/emoji/2.png");
+}
+
+.emoji3 {
+    -fx-background-image: url("images/emoji/3.png");
+}
+
+.emoji4 {
+    -fx-background-image: url("images/emoji/4.png");
+}
+
+.emoji5 {
+    -fx-background-image: url("images/emoji/5.png");
+}
+
+.textfield {
+    -fx-text-inner-color: white;
+}
+
+.loginHeader {
+    -fx-font-family: Nunito Regular;
+    -fx-font-size: 20;
+    -fx-fill: white;
+}
+
+.defaultConversation {
+    -fx-background-color: #dcdddd;
+}
+
+.selectedConversation {
+    -fx-text-fill: white;
+    /*-fx-font-weight: bold;*/
+    -fx-background-color: #1985a1;
+}

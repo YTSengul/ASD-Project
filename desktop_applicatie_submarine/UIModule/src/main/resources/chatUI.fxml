@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<SplitPane fx:id="splitPane" id="body" cacheShape="false" dividerPositions="0.3807615230460922" maxHeight="450.0"
+           maxWidth="800.0"
+           minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="1000.0" stylesheets="@style.css"
+           xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="nl.han.asd.submarine.uicontrollers.chat.ChatController">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="548.0" prefWidth="380.0"
+                style="-fx-background-color: #4c5c68;" stylesheets="@style.css">
+        <ToolBar layoutY="-2.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="380.0"
+                 style="-fx-background-color: #dcdddd;">
+        </ToolBar>
+        <fx:include source="conversations.fxml"/>
+        <fx:include source="addContactUI.fxml"/>
+        <fx:include source="copyUserDataUI.fxml"/>
+    </AnchorPane>
+    <AnchorPane focusTraversable="true" minHeight="0.0" minWidth="0.0" prefHeight="548.0" prefWidth="617.0"
+                style="-fx-background-color: dcdcdd;">
+        <ToolBar layoutY="509.0" minHeight="50.0" prefHeight="50.0" prefWidth="569.0"
+                 style="-fx-background-color: #4c5c68;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="509.0">
+            <JFXButton onAction="#sendFileAction" prefHeight="25.0" prefWidth="27.0" ripplerFill="BLACK"
+                       styleClass="doc-button" stylesheets="@style.css" text="Doc" textAlignment="CENTER">
+                <font>
+                    <Font size="1.0"/>
+                </font>
+            </JFXButton>
+
+            <TextField fx:id="chatField" prefHeight="30.0" prefWidth="510.0" promptText="Type message here"
+                       style="-fx-background-color: #46494c;" styleClass="textfield">
+                <effect>
+                    <Blend/>
+                </effect>
+                <font>
+                    <Font name="Nunito Regular" size="13.0"/>
+                </font>
+            </TextField>
+
+            <fx:include source="emojiUI.fxml"/>
+            <JFXButton onAction="#sendChatAction" prefHeight="25.0" prefWidth="27.0" ripplerFill="BLACK"
+                       styleClass="send-button" stylesheets="@style.css" text="Send" textAlignment="CENTER"
+                       defaultButton="true">
+                <font>
+                    <Font size="1.0"/>
+                </font>
+            </JFXButton>
+        </ToolBar>
+
+        <ToolBar layoutY="-2.0" maxHeight="50.0" minHeight="50.0" prefHeight="50.0" prefWidth="569.0"
+                 style="-fx-background-color: #4c5c68;" AnchorPane.bottomAnchor="504.0" AnchorPane.leftAnchor="0.0"
+                 AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-2.0">
+            <Text fx:id="conversationTitle" style="-fx-font-size: 17; -fx-fill: white;-fx-font-weight: bold;"
+                  strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="569.0"/>
+        </ToolBar>
+        <ScrollPane fx:id="chatScrollPane" vbarPolicy="NEVER" hbarPolicy="NEVER" layoutY="44.0" prefHeight="465.0"
+                    prefWidth="614.0"
+                    style="-fx-background-color: #dcdddd;">
+            <VBox fx:id="chatContainer" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                  prefWidth="599.0"/>
+        </ScrollPane>
+    </AnchorPane>
+</SplitPane>

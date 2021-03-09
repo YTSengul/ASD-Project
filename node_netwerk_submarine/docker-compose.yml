@@ -1,0 +1,22 @@
+version: "3"
+services:
+  node:
+    image: dennishk/asd-node-submarine
+    container_name: node
+    restart: always
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+      - "25010:25010"
+    environment:
+      - PORT=25010
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./mongo_data:/data/db
+    ports:
+      - "27017:27017"
